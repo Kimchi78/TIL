@@ -135,4 +135,3 @@ def find_min_max(lst):
     print(sorted_lst)
 ```
 
-## 문자열 제거
