@@ -73,3 +73,66 @@
   모든 메서드가 지원하는건 아니다.
   반홥값이 None이 나오면 중간에 끊겨서 오류 날 수 도 있다.
 
+## 과제2
+ Max, Min 함수
+ ```python
+ def find_min_max(input_list):
+    a = 0
+    for i in input_list:
+        if i > a:
+            a = i
+    b = a
+    for i in input_list:
+        if b > i:
+            b = i 
+    return (b,a)
+  ```
+  return min(x),max(x)  ==> 도 가능
+
+## 새롭게 배운 것
+
+### sort()
+sort() 정렬 메소드는 반환값이 None 이다.
+정렬 후, 다시 그 리스트를 출력하면 정렬되어 있다.
+정렬된 것을 다시 할당하고 싶으면 sorted 함수 사용
+
+### range()
+for문을 돌릴때 범위가 필요하다. 정수를 넣으면 안되고
+range(len(data_2)) - 문자열 데이터의 경우 사이즈 변환 -> 범위 변환이 필요하다
+
+### reversed()
+ reverse() 하면, 하나하나 문자의 리스트가 생성된다.
+ 문자열로 reverse 가 하고 싶은거라면
+ join으로 이어주면 된다.
+
+ ### 리스트 중복 제거
+  리스트를 SET으로 만든 뒤 다시 List로 만들면 중복이 제거된다.
+  set는 중복을 허용하지 않기 때문이다.
+
+### count()
+문자열 카운트 str.count(char)
+
+## 함수로 정렬하기
+```python
+def find_min_max(lst):
+    """
+    이 함수는 인자로 받은 리스트를 오름차순으로 정렬한 후,
+    첫 번쨰와, 마지막 요소를 반환하는 함수
+    """
+    #원본 리스트 변경하지 않기 위해 복사본 지정
+    sorted_lst = lst[:]
+
+    #리스트의 길이만큼 반복
+    for idx in range(len(sorted_lst)):
+        #현재 인덱스를 최소값으로 인덱스로 가정
+        min_index = idx
+        # idx 뒤에 있는 나머지 원소들과 비교하기 위해 나머지 원소들을 순회
+        for j in range(idx + 1, len(sorted_lst)):
+            #j에서 더 작은 원소를 찾으면, 최소값의 인덱스 갱신(업데이트)
+            if sorted_lst[min_index] > sorted_lst[j]:
+                min_index = j
+        sorted_lst[idx], sorted_lst[min_index] = sorted_lst[min_index], sorted_lst[idx] #스왑
+    print(sorted_lst)
+```
+
+## 문자열 제거
