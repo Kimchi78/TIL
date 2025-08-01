@@ -89,7 +89,7 @@ plt.show()
 
 ## F05 2022년 이후 월별 데이터 시각화
 
-```python
+```python 
 df3 = pd.DataFrame(df)
 df4 = df3[df['Date'] < '2022-01-01'].index
 df3.drop(df4, inplace=True)
